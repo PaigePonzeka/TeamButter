@@ -9,18 +9,28 @@
 	var ingredientHtml = ingredientTemplate({});
 	var ingredientContainer = ('.recipe-ingredients');
 
+	var $addRecipeButton = $('#addRecipe');
+	var addIngredientButtons = '.js-add-ingredient'; // not an object because they are generated per recipe
+
 	// Button handler for adding new recipe
-	$('#addRecipe').click(function(e){
+	$addRecipeButton.click(function(e){
 		console.log("Adding RECIPE");
-		// TODO use handlebars to get the template for a recipe
 		$recipeContainer.append(recipeHtml);
 	});
 
 	// Button handler for adding new ingredient (need to use on)
-	$('#recipes').on('click', '.js-add-ingredient', function(e){
-		console.log("adding a New Ingredient");
+	$('#recipes').on('click', addIngredientButtons, function(e){
 		// TODO - need to make this smarter to handle appending to the actual parent when there is more than one recipe card.
 		$(ingredientContainer).append(ingredientHtml);
-		// TODO use handlebars to generate and add template
 	});
+
+	function init(){
+		//adds a blank recipe and a blank ingredient
+
+		$addRecipeButton.click();
+		$(addIngredientButtons).click();
+	}
+
+	// intializing the application
+	init();
 })($);
