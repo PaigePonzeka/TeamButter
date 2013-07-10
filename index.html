@@ -5,19 +5,19 @@
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 	</head>
 	<body>
-		<h1> Shopping List Generator </h1>
+		<h1 class="text-center"> Shopping List Generator </h1>
 
 		<ul id="shoppingList">
 		</ul>
-		<ul id="recipes" class="well">
+		<ul id="recipes">
 			
 		</ul>
 		<button id="addRecipe" class="btn btn-primary"> + Add Recipe </button>
 		
 		<script id="recipe-template" type="text/x-handlebars-template">
-  			<li class="recipe"> 
+  			<li class="recipe well"> 
 				<h3> Recipe Card </h3>
-				<input type="text" placeholder="Recipe Name"> </input>
+				<input type="text" placeholder="Recipe Name" class="input-xxlarge"> </input>
 
 				<h4> Ingredients </h4>
 
@@ -33,7 +33,7 @@
 		<script id="ingredient-template" type="text/x-handlebars-template">
 			<li class="ingredient"> 
 				<form class="form-inline">
-				  <input type="text" class="recipe-total" placeholder="Amount"></input>
+				  <input type="text" class="recipe-total input-mini" placeholder="Amount"></input>
 						<select class="recipe-measurement">
 							<option value="" disabled selected>Select Measurement</option>
 							<option> Whole </option>
@@ -41,7 +41,7 @@
 							<option> Teaspoon </option>
 							<option> Tablespoon </option>
 						</select>
-						<input type="text" class="recipe-item" placeholder="Item Name"></input>
+						<input type="text" class="recipe-item input-medium" placeholder="Item Name"></input>
 				</form>
 			</li>
 		</script>
