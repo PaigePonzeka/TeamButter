@@ -1,9 +1,55 @@
 <html>
 	<head>
 		<title> Team Butter Shopping List </title>
+		<link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style/style.css">
 	</head>
 	<body>
-		<h1> Test </h1>
+		<h1> Shopping List Generator </h1>
+
+		<ul id="shoppingList">
+		</ul>
+		<ul id="recipes" class="well">
+			
+		</ul>
+		<button id="addRecipe" class="btn btn-primary"> + Add Recipe </button>
+		
+		<script id="recipe-template" type="text/x-handlebars-template">
+  			<li class="recipe"> 
+				<h3> Recipe Card </h3>
+				<input type="text" placeholder="Recipe Name"> </input>
+
+				<h4> Ingredients </h4>
+
+
+				<ul class="recipe-ingredients">
+					
+
+				</ul>
+				<button class="js-add-ingredient btn"> + Add Ingredient </button>
+			</li>
+		</script>
+
+		<script id="ingredient-template" type="text/x-handlebars-template">
+			<li class="ingredient"> 
+				<form class="form-inline">
+				  <input type="text" class="recipe-total" placeholder="Amount"></input>
+						<select class="recipe-measurement">
+							<option value="" disabled selected>Select Measurement</option>
+							<option> Whole </option>
+							<option> Cup </option>
+							<option> Teaspoon </option>
+							<option> Tablespoon </option>
+						</select>
+						<input type="text" class="recipe-item" placeholder="Item Name"></input>
+				</form>
+			</li>
+		</script>
+
+		<!-- Loading Scripts -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="scripts/bootstrap.min.js"></script>
+		<script src="scripts/handlebars.js"></script>
+		<script src="scripts/butter.js"></script>
 	</body>
 </html>
