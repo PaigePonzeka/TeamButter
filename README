@@ -1,0 +1,12 @@
+This is supposed to be an ingredient checklist made for the cooking TEAM BUTTER.
+
+There's a bug with Compass and Mountain Lion and Ruby 1.8 (don't forget to use compass watch --poll to work around this [mostly a note for myself])
+
+Goal: (MVP)
+Have a list of ingredients and generate a shopping list using Javascript
+
+Long Term Goals Include: 
+Being able to scrape recipe sites for ingredients
+Storing ingredients 
+Using Cookies to save place
+etc... 
