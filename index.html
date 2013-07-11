@@ -13,11 +13,14 @@
 			
 		</ul>
 		<button id="addRecipe" class="btn btn-primary"> + Add Recipe </button>
+
+		<button id="generateShoppingList" class="btn btn-success"> Generate Shopping List </button>
+		<button id="runTest" class="btn btn-warning"> Run Test </button>
 		
 		<script id="recipe-template" type="text/x-handlebars-template">
   			<li class="recipe well"> 
 				<h3> Recipe Card </h3>
-				<input type="text" placeholder="Recipe Name" class="input-xxlarge"> </input>
+				<input type="text" placeholder="Recipe Name" class="input-xxlarge recipe-name"> </input>
 
 				<h4> Ingredients </h4>
 
@@ -33,13 +36,13 @@
 		<script id="ingredient-template" type="text/x-handlebars-template">
 			<li class="ingredient"> 
 				<form class="form-inline">
-				  <input type="text" class="recipe-total input-mini" placeholder="Amount"></input>
+				  <input type="text" class="recipe-amount input-mini" placeholder="Amount"></input>
 						<select class="recipe-measurement">
 							<option value="" disabled selected>Select Measurement</option>
-							<option> Whole </option>
-							<option> Cup </option>
-							<option> Teaspoon </option>
-							<option> Tablespoon </option>
+							<option value="whole"> Whole </option>
+							<option value="cup"> Cup </option>
+							<option value="teaspoon"> Teaspoon </option>
+							<option value="tablespoon"> Tablespoon </option>
 						</select>
 						<input type="text" class="recipe-item input-medium" placeholder="Item Name"></input>
 				</form>
