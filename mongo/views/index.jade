@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	h1= title
+	#recipes
+		- each recipe in recipes
+			div.recipe
+				div.created_at= recipe.created_at 
+				div.name= recipe.name
+				form( method="get", action="/recipe/:id/edit") 
+					input(name="_id", type="hidden", value=recipe._id.toHexString()) 
+					input(id="edit", value="Edit", type="submit")
+				form( method="post", action="/recipe/:id/delete") 
+					input(name="_id", type="hidden", value=recipe._id.toHexString()) 
+					input(id="delete", value="X", type="submit")
+	a(href="/recipe/new")!= "Add New Recipe"

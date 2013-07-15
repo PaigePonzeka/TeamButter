@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= "Edit Recipe"
+    div.newrecipe
+        form( method="post")
+            input(name="_id", type="hidden", value=recipe._id.toHexString()) 
+            div
+                div
+                    span.label Name :
+                    input(type="text", name="name", id="editRecipeName", value=recipe.name)
+                div#editRecipeSubmit
+                    input(type="submit", value="Update")
+        a(href="/")!= "Back to Recipe List"
