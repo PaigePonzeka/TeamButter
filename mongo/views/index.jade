@@ -7,6 +7,8 @@ block content
 			div.recipe
 				div.created_at= recipe.created_at 
 				div.name= recipe.name
+
+				a(href="/recipe/"+recipe._id.toHexString())!= recipe.name
 				form( method="get", action="/recipe/:id/edit") 
 					input(name="_id", type="hidden", value=recipe._id.toHexString()) 
 					input(id="edit", value="Edit", type="submit")

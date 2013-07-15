@@ -68,6 +68,19 @@ app.get('/recipe/:id/edit', function(req, res) {
         });
 	});
 });
+// show individual recipes
+app.get('/recipe/:id', function(req, res) {
+	console.log(req.params.id);
+    recipeProvider.findById(req.params.id, function(error, recipe) {
+    	console.log(recipe);
+        res.render('recipe_show.jade',
+        { locals: {
+            title: recipe.name,
+            recipe: recipe
+        }
+        });
+    });
+});
 
 //save updated recipe
 app.post('/recipe/:id/edit', function(req, res) {
@@ -83,6 +96,19 @@ app.post('/recipe/:id/delete', function(req, res) {
     recipeProvider.delete(req.param('_id'), function(error, docs) {
         res.redirect('/')
     });
+});
+
+//add ingredient to a recipe
+app.post('/recipe/addIngredient', function(req, res) {
+    recipeProvider.addIngredientToRecipe(req.param('_id'), {
+        //person: req.param('person'),
+        amount: req.param('amount'),
+        measurement: req.param('measurement'),
+        type: req.param('type'),
+        created_at: new Date()
+       } , function( error, docs) {
+           res.redirect('/recipe/' + req.param('_id'))
+       });
 });
 
 app.get('/', routes.index);

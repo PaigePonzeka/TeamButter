@@ -1,0 +1,22 @@
+h1= title
+div.recipe
+  div.name= recipe.name
+  - each ingredient in recipe.ingredients
+    div.ingredient
+      div.amount= ingredient.amount
+      div.measurement= ingredient.measurement
+      div.type= ingredient.type
+  div
+    form( method="post", action="/recipe/addIngredient")
+      input( type="hidden", name="_id", value=recipe._id.toHexString())
+      div
+        span Amount :
+        input( type="text", name="amount", id="addIngredientAmount")
+      div
+        span Measurement :
+        input( type="text", name="measurement", id="addIngredientMeasurement")
+      div
+        span Type :
+        input( type="text", name="type", id="addIngredientType")
+      div#editArticleSubmit
+        input(type="submit", value="Send")

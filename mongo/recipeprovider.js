@@ -32,6 +32,7 @@ RecipeProvider.prototype.findAll = function(callback) {
 
 //save new employee
 RecipeProvider.prototype.save = function(recipes, callback) {
+  console.log("Saving dsfsdf");
     this.getCollection(function(error, recipe_collection) {
       if( error ) callback(error)
       else {
@@ -41,6 +42,15 @@ RecipeProvider.prototype.save = function(recipes, callback) {
         for( var i =0;i< recipes.length;i++ ) {
           recipe = recipes[i];
           recipe.created_at = new Date();
+
+          // recipe ingredients
+          if( recipe.ingredients === undefined){
+            recipe.ingredients = [];
+          }
+
+          for(var j =0; recipe.ingredients.length; j++ ){
+            recipe.ingredients[j].created_at = new Date();
+          }
         }
 
         recipe_collection.insert(recipes, function() {
@@ -49,6 +59,30 @@ RecipeProvider.prototype.save = function(recipes, callback) {
       }
     });
 };
+
+/* Lets bootstrap with dummy data */
+//new RecipeProvider().save([
+//  {name: 'Post one', ingredients:[{amt:'1', measurement:'whole', item:"garlic"}]},
+//  {name: 'Post two'},
+//  {name: 'Post three'}
+//], function(error, articles){});
+
+//add ingredient to a recipe
+RecipeProvider.prototype.addIngredientToRecipe = function(recipeId, ingredient, callback) {
+  this.getCollection(function(error, recipe_collection) {
+    if( error ) callback( error );
+    else {
+      recipe_collection.update(
+        {_id: recipe_collection.db.bson_serializer.ObjectID.createFromHexString(recipeId)},
+        {"$push": {ingredients: ingredient}},
+        function(error, recipe){
+          if( error ) callback(error);
+          else callback(null, recipe)
+        });
+    }
+  });
+};
+
 
 //find an recipe by ID
 RecipeProvider.prototype.findById = function(id, callback) {
@@ -66,6 +100,7 @@ RecipeProvider.prototype.findById = function(id, callback) {
 
 // update a recipe
 RecipeProvider.prototype.update = function(recipeId, recipes, callback) {
+  console.log(recipes);
     this.getCollection(function(error, recipe_collection) {
       if( error ) callback(error);
       else {

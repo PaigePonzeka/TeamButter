@@ -4,11 +4,26 @@ block content
     h1= "Edit Recipe"
     div.newrecipe
         form( method="post")
-            input(name="_id", type="hidden", value=recipe._id.toHexString()) 
+            input(name="_id", type="text", value=recipe._id.toHexString()) 
             div
                 div
                     span.label Name :
                     input(type="text", name="name", id="editRecipeName", value=recipe.name)
+                div
+                    div
+                        form( method="post", action="/recipe/addIngredient")
+                            input(name="recipe_id", type="text", value=recipe._id.toHexString()) 
+                            div
+                              span Amount :
+                              input( type="text", name="Amount", id="addIngredientAmount")
+                            div
+                              span Measurement :
+                              input( type="text", name="Measurement", id="addIngredientMeasurement")
+                            div
+                              span Type :
+                              input( type="text", name="Type", id="addIngredientType")
+                            div
+                                input(type="submit", value="Send")
                 div#editRecipeSubmit
                     input(type="submit", value="Update")
         a(href="/")!= "Back to Recipe List"
